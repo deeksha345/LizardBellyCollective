@@ -5,7 +5,7 @@ import classes from './LbcBanner.css';
 const lbcBanner = (props) => (
     <Aux>
         {/* logo component */}
-        <p>**logo here**</p>
+        <a href="/"><i class="fab fa-facebook-square fa-5x"></i></a>
         <h1>Lizard Belly</h1>
         <div className={classes.Icons}>
             <a href="/"><i class="fab fa-facebook-square fa-2x"></i></a>

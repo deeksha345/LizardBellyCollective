@@ -2,12 +2,23 @@
     position: fixed;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     background-color: #0E0F1C;
     color: #E2E8EB;
     height: 100%;
     width: 20%;
     z-index: 100;
-    padding: 20px 0px;
+    padding-top: 20px;
+}
+
+.Top {
+    height: 30%;
+    width: 100%;
+}
+
+.Bottom {
+    height: 70%;
+    width: 100%;
+    padding: 30px 0px 10px 0px;
 }

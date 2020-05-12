@@ -6,12 +6,12 @@ import NavItems from './NavItems/NavItems';
 
 const sidebar = (props) => (
     <div className={classes.Sidebar}>
-        <div style={{height: '25%', paddingBottom: '10px'}}>
+        <div className={classes.Top}>
             <LbcBanner />   
         </div>
-        <div style={{height: '60%'}}>
+        <nav className={classes.Bottom}>
             <NavItems />
-        </div>
+        </nav>
     </div>
 );
 

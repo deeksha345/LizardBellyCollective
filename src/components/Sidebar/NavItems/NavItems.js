@@ -1,17 +1,17 @@
 import React from 'react';
-import Button from '../../UI/Button/Button';
+import NavItem from './NavItem/NavItem';
 import classes from './NavItems.css';
 
 const navItems = (props) => (
-    <div>
-        <Button>Home</Button>
-        <Button>About Us</Button>
-        <Button>Events</Button>
-        <Button>Artists</Button>
-        <Button>Media</Button>
-        <Button>Merch</Button>
-        <Button>EPK</Button>
-        <Button>Contact Us</Button>
+    <div className={classes.NavItems}>
+        <NavItem link='/' active>Home</NavItem>
+        <NavItem link='/'>About Us</NavItem>
+        <NavItem link='/'>Events</NavItem>
+        <NavItem link='/'>Artists</NavItem>
+        <NavItem link='/'>Media</NavItem>
+        <NavItem link='/'>Merch</NavItem>
+        <NavItem link='/'>EPK</NavItem>
+        <NavItem link='/'>Contact Us</NavItem>
     </div>
 );
 
