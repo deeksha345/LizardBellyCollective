@@ -1,0 +1,22 @@
+.Button {
+    border: none;
+    height: auto;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #0E0F1C;
+    color: #E2E8EB;
+    padding: 5px;
+    margin: none;
+}
+
+.Button:hover {
+    border-left: 3px solid #0000EE;
+    
+}
+
+.Button:active {
+    border-left: 3px solid rgb(143, 0, 138);
+}
+
+
+
