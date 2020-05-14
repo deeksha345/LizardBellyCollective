@@ -3,6 +3,7 @@ import classes from './Home.css';
 
 const home = (props) => (
     <div className={classes.Home}>
+        <div className={classes.Backdrop}>
         <a href="/"><i class="fab fa-facebook-square fa-8x"></i></a>
         <h1>LIZARD BELLY COLLECTIVE</h1>
         <h3>A group of artists in the greater Seattle area</h3>
@@ -17,6 +18,7 @@ const home = (props) => (
         <br></br>
         <p>Want to collab with our team?</p>
         <button>Contact Us</button>
+        </div>
     </div>
 );
 
