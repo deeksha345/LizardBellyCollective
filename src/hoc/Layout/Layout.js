@@ -6,7 +6,7 @@ const layout = (props) => (
     <Aux>
         <Sidebar />
         <main>
-            {props.children} {/* page content */}
+            {props.children} 
         </main>
     </Aux>
 );

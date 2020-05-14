@@ -1,7 +1,8 @@
 import React from 'react';
+import classes from './Home.css';
 
 const home = (props) => (
-    <div style={{textAlign: 'center', color: "#0E0F1C"}}>
+    <div className={classes.Home}>
         <a href="/"><i class="fab fa-facebook-square fa-8x"></i></a>
         <h1>LIZARD BELLY COLLECTIVE</h1>
         <h3>A group of artists in the greater Seattle area</h3>

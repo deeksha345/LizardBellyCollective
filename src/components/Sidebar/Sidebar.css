@@ -1,7 +1,8 @@
 .Sidebar {
     position: fixed;
     display: flex;
-    flex-direction: column;
+    float: right;
+    flex-flow: column;
     justify-content: space-between;
     align-items: center;
     background-color: #0E0F1C;

@@ -3,3 +3,12 @@ body {
   padding: 0;
   font-family: "Poppins", sans-serif;
 }
+
+body, html {
+  height: 100%;
+  margin: 0;
+  background-image: url(./assets/images/chameleon-background.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
