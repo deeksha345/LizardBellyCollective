@@ -1,0 +1,27 @@
+.NavItem {
+    width: 100%;
+    height: auto;
+    text-align: left;
+    box-sizing: border-box;
+    widows: auto;
+}
+
+.NavItem a {
+    width: 100%;
+    font-size: 18px;
+    font-family: "Poppins";
+    padding-left: 20px;
+    color: #E2E8EB;
+    text-decoration: none;
+}
+
+.NavItem a:hover {
+    width: 100%;
+    border-left: 3px solid #0000EE;
+}
+
+.NavItem a:active, .NavItem a.active {
+    width: 100%;
+    border-left: 3px solid rgb(143, 0, 138); 
+}
+
