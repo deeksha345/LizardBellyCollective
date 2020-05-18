@@ -8,9 +8,9 @@ const sidebar = (props) => (
         <div className={classes.Top}>
             <LbcBanner />   
         </div>
-        <nav className={classes.Bottom}>
+        <div className={classes.Bottom}>
             <NavItems />
-        </nav>
+        </div>
     </div>
 );
 
