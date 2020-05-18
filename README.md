@@ -1,4 +1,4 @@
-NOTES BY THE AUTHORS:
+NOTES BY THE AUTHORS (Deeksha Sharma and Gus Mcmanus):
 
 This repository consists of a web application created using React and is now hosted on [Lizard Belly Collective](https://www.lizardbellycollective.com).
 
