@@ -1,4 +1,5 @@
 NOTES BY THE AUTHORS:
+
 This repository consists of a web application created using React and is now hosted on [Lizard Belly Collective](https://www.lizardbellycollective.com).
 
 The user interface was build using highly granular components increasing the modularity, efficiency, and maintainability of the website. It offers a clean yet artistic look which represents the soul of the lizard belly artist collective effectively.
@@ -9,6 +10,7 @@ The database was created using Firebase which offered all the functionality we n
 
 
 AUTO GENERATED README
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
