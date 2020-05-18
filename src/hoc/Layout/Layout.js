@@ -1,11 +1,12 @@
 import React from 'react';
 import Aux from '../Aux/Aux';
 import Sidebar from '../../components/Sidebar/Sidebar';
+import classes from './Layout.css'
 
 const layout = (props) => (
     <Aux>
         <Sidebar />
-        <main>
+        <main className={classes.Content}>
             {props.children} 
         </main>
     </Aux>

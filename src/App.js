@@ -8,13 +8,14 @@ import backdrop from './components/UI/Backdrop/Backdrop';
 class App extends Component {
   render() {
     return (
-      <div className={classes.App}>
-        <Layout>
-            <Backdrop>
-                <Home />
-            </Backdrop>
-        </Layout>
-      </div>
+        <div className={classes.App}>
+            
+            <Layout>
+                <Backdrop>
+                    <Home />
+                </Backdrop>
+            </Layout>
+        </div>
     );
   }
 }
