@@ -1,18 +1,46 @@
-import React from 'react';
+import React, { Component } from 'react';
 import NavItem from './NavItem/NavItem';
 import classes from './NavItems.css';
 
-const navItems = (props) => (
-    <div className={classes.NavItems}>
-        <NavItem link='/' active>Home</NavItem>
-        <NavItem link='/'>About Us</NavItem>
-        <NavItem link='/'>Events</NavItem>
-        <NavItem link='/'>Artists</NavItem>
-        <NavItem link='/'>Media</NavItem>
-        <NavItem link='/'>Merch</NavItem>
-        <NavItem link='/'>EPK</NavItem>
-        <NavItem link='/'>Contact Us</NavItem>
-    </div>
-);
+class NavItems extends Component {
+    state = {
+        active: "/",
+        navItems: [
+            {link: "/", title: "Home"},
+            {link: "/about", title: "About Us"},
+            {link: "/events", title: "Events"},
+            {link: "/artists", title: "Artists"},
+            {link: "/media", title: "Media"},
+            {link: "/merch", title: "Merch"},
+            {link: "/epk", title: "EPK"},
+            {link: "/contact", title: "Contact Us"}
+        ]
+    }
 
-export default navItems;
+    setActiveHandler = (link) => {
+        this.setState({active: link})
+    } 
+
+    render() {
+        const links = this.state.navItems.map(item => {
+            return (
+                <NavItem 
+                    key={item.title}
+                    link={item.link} 
+                    active={this.state.active === item.link}
+                    clicked={() => {
+                        this.setActiveHandler(item.link);
+                        (this.props.closeSidebar ? this.props.closeSidebar() : null);
+                    }}
+                >{item.title}</NavItem>
+            )   
+        })
+        return (
+            <div className={classes.NavItems}>
+                {links}
+            </div>
+        );
+    }
+}
+
+export default NavItems;

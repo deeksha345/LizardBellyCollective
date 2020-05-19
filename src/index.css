@@ -9,6 +9,6 @@ body, html {
   margin: 0;
   background-image: url(./assets/images/chameleon-background.jpg);
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: repeat-y;
   background-size: cover;
 }
