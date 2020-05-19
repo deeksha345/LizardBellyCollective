@@ -8,6 +8,7 @@ import Media from './containers/Media/Media';
 import Merch from './containers/Merch/Merch';
 import Epk from './containers/EPK/Epk';
 import Contact from './containers/Contact/Contact';
+import Admin from './containers/Admin/Admin';
 import Backdrop from './components/UI/Backdrop/Backdrop';
 import { BrowserRouter, Route } from 'react-router-dom';
 
@@ -26,6 +27,7 @@ class App extends Component {
                   <Route path="/merch" exact component={Merch} />
                   <Route path="/epk" exact component={Epk} />
                   <Route path="/contact" exact component={Contact} />
+                  <Route path="/adminlbclogin" exact component={Admin} />
                 </Backdrop>
             </Layout>
           </div>
