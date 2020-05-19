@@ -25,11 +25,12 @@ class NavItems extends Component {
         const links = this.state.navItems.map(item => {
             return (
                 <NavItem 
+                    key={item.title}
                     link={item.link} 
                     active={this.state.active === item.link}
                     clicked={() => {
                         this.setActiveHandler(item.link);
-                        this.props.closeSidebar();
+                        (this.props.closeSidebar ? this.props.closeSidebar() : null);
                     }}
                 >{item.title}</NavItem>
             )   
