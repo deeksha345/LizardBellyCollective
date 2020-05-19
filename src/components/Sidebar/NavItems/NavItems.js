@@ -27,7 +27,10 @@ class NavItems extends Component {
                 <NavItem 
                     link={item.link} 
                     active={this.state.active === item.link}
-                    clicked={() => this.setActiveHandler(item.link)}
+                    clicked={() => {
+                        this.setActiveHandler(item.link);
+                        this.props.closeSidebar();
+                    }}
                 >{item.title}</NavItem>
             )   
         })

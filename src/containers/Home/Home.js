@@ -14,11 +14,16 @@ class Home extends Component {
                     <a href="/"><i className="fab fa-twitter fa-2x"></i></a>
                     <a href="/"><i className="fab fa-soundcloud fa-2x"></i></a>
                 </div>
-                <p>Join our newsletter to stay informed about new events and releases!</p>
-                <input type="text" value="" placeholder="example@address.com" />
-                <br></br>
-                <p>Want to collab with our team?</p>
-                <button>Contact Us</button>
+                <div className={classes.Boxes}>
+                    <div className={classes.Box}>
+                        <p>Stay informed on new events and releases!</p>
+                        <input type="text" value="" placeholder="example@address.com" />
+                    </div>
+                    <div className={classes.Box}>
+                        <p>Want to collab with our team?</p>
+                        <button>Contact Us</button>
+                    </div>
+                </div>
             </div>
         );
     }

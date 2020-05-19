@@ -1,19 +1,22 @@
 .Sidebar {
     position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
     display: flex;
-    float: right;
     flex-flow: column;
-    align-items: center;
     background-color: #0E0F1C;
     color: #E2E8EB;
+    z-index: 200;
     height: 100%;
-    width: 20%;
+    max-width: 70%;
 }
 
-.Top {
-    height: fit-content;
-    width: 100%;
-    padding: 20px 0px;
+.X {
+    text-align: right;
+    padding: 0px 30px;
+    cursor: pointer;
+    height: 60px;
 }
 
 .Bottom {
@@ -22,7 +25,15 @@
     flex-grow: 1;
 }
 
-@media (max-width: 700px) {
+.Open {
+    display: flex;
+}
+
+.Close {
+    display: none;
+}
+
+@media (min-width: 700px) {
     .Sidebar {
         display: none;
     }
