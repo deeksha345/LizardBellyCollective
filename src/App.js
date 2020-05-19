@@ -1,21 +1,24 @@
 import React, { Component } from 'react';
 import classes from './App.css';
 import Layout from './hoc/Layout/Layout';
-import Home from './components/Home/Home';
+import Home from './containers/Home/Home';
+import About from './containers/About/About';
 import Backdrop from './components/UI/Backdrop/Backdrop';
-import backdrop from './components/UI/Backdrop/Backdrop';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 class App extends Component {
   render() {
     return (
-        <div className={classes.App}>
-            
+        <BrowserRouter>
+          <div className={classes.App}>
             <Layout>
                 <Backdrop>
-                    <Home />
+                  <Route path="/" exact component={Home} />
+                  <Route path="/about" exact component={About} />
                 </Backdrop>
             </Layout>
-        </div>
+          </div>
+        </BrowserRouter>
     );
   }
 }
