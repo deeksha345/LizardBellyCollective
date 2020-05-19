@@ -4,6 +4,7 @@ import Layout from './hoc/Layout/Layout';
 import Home from './containers/Home/Home';
 import About from './containers/About/About';
 import Events from './containers/Events/Events';
+import Artists from './containers/Artists/Artists';
 import Media from './containers/Media/Media';
 import Merch from './containers/Merch/Merch';
 import Epk from './containers/EPK/Epk';
@@ -22,7 +23,7 @@ class App extends Component {
                   <Route path="/" exact component={Home} />
                   <Route path="/about" exact component={About} />
                   <Route path="/events" exact component={Events} />
-                  <Route path="/artists" exact component={Home} />
+                  <Route path="/artists" exact component={Artists} />
                   <Route path="/media" exact component={Media} />
                   <Route path="/merch" exact component={Merch} />
                   <Route path="/epk" exact component={Epk} />

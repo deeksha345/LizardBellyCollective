@@ -25,3 +25,17 @@
     text-align: center;
     padding: 10px;
 }
+
+@media (max-width: 700px) {
+    .Boxes {
+        flex-flow: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .Box {
+        width: 60%;
+        margin-bottom: 20px;
+        height: 200px;
+    }
+}
