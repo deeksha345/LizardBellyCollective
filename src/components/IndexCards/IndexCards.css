@@ -1,0 +1,15 @@
+.IndexCards {
+    background-color: rgba(245, 245, 245, 0.118);
+    border: 1px solid rgba(245, 245, 245, 0.118);
+    display: inline-block;
+    padding: 16px;
+    text-align: center;
+    margin: 16px;
+    border-radius: 5px;
+}
+
+.IndexCards:hover {
+    background-color: rgba(245, 245, 245, 0.2);
+    border: 1px solid rgb(85, 26, 139);
+    cursor: pointer;
+}
