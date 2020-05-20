@@ -61,22 +61,16 @@ class Artists extends Component {
 
     render() {
 
+      if(!this.state.hasData){this.getMembers();}
       this.createBoxes();
 
         return (
             <div className={classes.Artists}>
-                <h1 style={{marginBottom: '50px'}}>Artists!</h1>
-                <button style={{height:'50px', width:'100px'}} onClick={this.getMembers}>Get Data</button>
+                <h1 style={{marginBottom: '50px'}}>Artists!</h1>                
                 {this.artists}
             </div>
         );
     }
 }
-/*
-<IndexCards title={'Band1'} description={'This is the bio for Band1'}/>
-<IndexCards title={'Band2'} description={'This is the bio for Band2'}/>
-<IndexCards title={'Band3'} description={'This is the bio for Band3'}/>
-<IndexCards title={'Band4'} description={'This is the bio for Band4'}/>
-<IndexCards title={'Band5'} description={'This is the bio for Band5'}/>
-*/
+
 export default Artists;
