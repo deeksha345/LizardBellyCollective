@@ -7,8 +7,9 @@ body {
 body, html {
   height: 100%;
   margin: 0;
+  background-attachment: fixed;
   background-image: url(./assets/images/chameleon-background.jpg);
   background-position: center;
-  background-repeat: repeat-y;
+  background-repeat: no-repeat;
   background-size: cover;
 }
