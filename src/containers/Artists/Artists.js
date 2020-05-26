@@ -24,14 +24,16 @@ class Artists extends Component {
     artists = null;
 
     createBoxes = () =>{
-        //console.log(this.state.artists);
         this.artists = Object.entries(this.state.artists).map((artist) => {
             return(
-            <IndexCards
-                key={artist[0]}
-                title={artist[1].name}
-                description={artist[1].bio}
-            />
+            <div>
+              <IndexCards
+                  key={artist[0]}
+                  title={artist[1].name}
+                  description={artist[1].bio}
+                  imgSource={artist[1].image}
+              />
+            </div>
             );
         }); 
     }
@@ -47,20 +49,18 @@ class Artists extends Component {
     }*/
     
     // request data
-
     getMembers = () => {
       axios.get('https://lizardbellycollective-61b17.firebaseio.com/members.json')
-      .then(response => {
-        this.setState({hasData: true}); 
-        this.setState({artists: response.data}); 
-        this.createBoxes();})
+      .then(response => { this.setState({artists: response.data, hasData: true}) })
       .catch(error => console.log(error));
     }
 
-    // Create block saying "if database data exists, map data to cards"
+    //accept file input
+    fileSelectHandler = event => {
+      console.log(event.target);
+    }
 
     render() {
-
       if(!this.state.hasData){this.getMembers();}
       this.createBoxes();
 
