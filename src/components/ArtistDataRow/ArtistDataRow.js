@@ -1,10 +1,10 @@
 import React from 'react';
-import ArtistDataRow from './ArtistDataRow.css';
+import classes from './ArtistDataRow.css';
 
 const DataRow = (props) => {
     return(
-        <div>
-            <div style={ArtistDataRow}>
+        <div className={classes.ArtistDataRow}>
+            <div className={classes.Section}>
                 <p>Image:</p>
                 <input type="file"/>
                 <p>Artist Name:</p>
@@ -12,24 +12,39 @@ const DataRow = (props) => {
                 <p>Bio:</p>
                 <input type="text" value={props.bio}/>
             </div>
-            <div style={ArtistDataRow}>
-                
-                <p>Instagram URL:</p>
+            <div className={classes.Section}>
+                <div className={classes.Item}>
+                <p>Instagram:</p>
                 <input type="text" value={props.instagram}/>
-                <p>Twitter URL:</p>
+                </div>
+                <div className={classes.Item}>
+                <p>Twitter:</p>
                 <input type="text" value={props.twitter}/>
-                <p>Twitch URL:</p>
+                </div>
+                <div className={classes.Item}>
+                <p>Twitch:</p>
                 <input type="text" value={props.twitch}/>
-                <p>Spotify URL:</p>
+                </div>
+                <div className={classes.Item}>
+                <p>Spotify:</p>
                 <input type="text" value={props.spotify}/>
-                <p>Soundcloud URL:</p>
+                </div>
+                <div className={classes.Item}>
+                <p>Soundcloud:</p>
                 <input type="text" value={props.soundcloud}/>
-                <p>Bandcamp URL:</p>
+                </div>
+                <div className={classes.Item}>
+                <p>Bandcamp:</p>
                 <input type="text" value={props.bandcamp}/>
-                <p>Youtube URL:</p>
+                </div>
+                <div className={classes.Item}>
+                <p>Youtube:</p>
                 <input type="text" value={props.youtube}/>
-                <p>Facebook URL:</p>
+                </div>
+                <div className={classes.Item}>
+                <p>Facebook:</p>
                 <input type="text" value={props.facebookn}/>
+                </div>
             </div>
         </div>
     );

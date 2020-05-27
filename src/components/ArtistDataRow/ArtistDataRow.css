@@ -1,3 +1,15 @@
 .ArtistDataRow {
-    columns: 4 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.Section {
+    display:flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Item {
+    flex: 1 0 21%;
 }
