@@ -9,33 +9,3 @@
     padding: 0px 15px;
     color: #E2E8EB;
 }
-
-.Boxes {
-    display: flex;
-    justify-content: space-evenly;
-    padding: 30px 0px;
-}
-
-.Box {
-    height: 300px;
-    width: 250px;
-    background-color: #E2E8EB;
-    color: #0E0F1C;
-    border-radius: 10px;
-    text-align: center;
-    padding: 10px;
-}
-
-@media (max-width: 700px) {
-    .Boxes {
-        flex-flow: column;
-        justify-content: space-evenly;
-        align-items: center;
-    }
-
-    .Box {
-        width: 60%;
-        margin-bottom: 20px;
-        height: 200px;
-    }
-}
