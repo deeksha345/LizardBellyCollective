@@ -11,8 +11,8 @@ class NavItems extends Component {
             {link: "/events", title: "Events"},
             {link: "/artists", title: "Artists"},
             {link: "/media", title: "Media"},
-            {link: "/merch", title: "Merch"},
-            {link: "/epk", title: "EPK"},
+            // {link: "/merch", title: "Merch"},
+            // {link: "/epk", title: "EPK"},
             {link: "/contact", title: "Contact Us"}
         ]
     }
