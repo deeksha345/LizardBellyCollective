@@ -3,6 +3,7 @@ import classes from './Contact.css';
 import Input from '../../components/UI/Input/Input';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import Backdrop from '../../components/UI/Backdrop/Backdrop';
+import LizardPicture from '../../assets/images/LBC-LOGO2.png';
 
 class Contact extends Component {
     state = {
@@ -152,8 +153,8 @@ class Contact extends Component {
                         <h1>Contact Us</h1>
                         {form}
                     </div>
-                    <div>
-                        {/* PICTURE OF LIZARD HERE */}
+                    <div className={classes.Lizard}>
+                        <img className={classes.LizardPic} src={LizardPicture} alt="Lizard Picture" />
                     </div>
                 </div>
             </Backdrop>
