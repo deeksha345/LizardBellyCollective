@@ -1,8 +1,52 @@
-import React, { Component } from 'react';
+import React from 'react'; //{ Component } from 'react';
 import classes from './Artists.css';
 import IndexCards from '../../components/IndexCards/IndexCards';
-import axios from '../../axios-init';
+//import axios from '../../axios-init';
+import Firebase from '../../Firebase';
 
+const Artists = () => {
+
+  const [getArtists, setArtists] = React.useState([]);
+
+  React.useEffect( () => {
+    const fetchData = async () => {
+      const db = Firebase.firestore();
+      const data = await db.collection('artists').get();
+      setArtists(data.docs.map(doc => doc.data()))
+    }
+    fetchData()
+  }, [] )
+
+  if(getArtists.length > 0)
+    console.log(getArtists[0]);
+
+  return(
+        
+        <div className={classes.Artists}>
+          <h1>Artists!</h1>
+          <div className={classes.Showcase}>
+            {getArtists.map(artist => (
+              <div className={classes.Item}>
+                <IndexCards
+                    title={artist.name}
+                    description={artist.bio}
+                    imgSource={artist.image}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+          
+    ); 
+};
+
+
+
+
+
+
+
+/*
 class Artists extends Component {
 
     // Sets up Axios (in the middle of creating this now)
@@ -47,7 +91,7 @@ class Artists extends Component {
         .catch(error => console.log(error));
       })
     }*/
-    
+    /*
     // request data
     getMembers = () => {
       axios.get('https://lizardbellycollective-61b17.firebaseio.com/members.json')
@@ -72,5 +116,5 @@ class Artists extends Component {
         );
     }
 }
-
+*/
 export default Artists;

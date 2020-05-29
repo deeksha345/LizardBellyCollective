@@ -1,32 +1,39 @@
 import React from 'react';
-//import {Image} from 'react';
 import cards from './IndexCards.css'
+//import { ProgressPlugin } from 'webpack';
 
-let selectedFile = null;
-
-const fileSelectHandler = event => {
-    selectedFile = event.target.files[0];
-}
-
-const fileUploadHandler = () => {
-    //selectedFile
-}
 
 const indexCards = (props) => {
+
+    console.log(props.imgSource)
     return(
-        <div className={cards.IndexCards}> 
+        <div  key={props.key} className={cards.IndexCards} >
+            <img 
+                src={props.imgSource}
+                alt= 'unable to load'
+                className={cards.Images}
+            />
             <h1>{props.title}</h1>
-            <p>{props.description}</p>
-            <input type="file" onChange={fileSelectHandler} />
-            <button onClick={fileUploadHandler}>Upload</button>
         </div>
     );
 }
 
-/*<Image 
-                style={{width: 250, height: 250}}
-                resizeMode="contain"
-                source = {{uri: props.imgSource}}
-            />*/
+/* uploaders:
+
+            <input type="file" onChange={fileSelectHandler} />
+            <button onClick={fileUploadHandler}>Upload</button>
+            <p>{props.description}</p>
+*/
+
+
+// <img src={props.imgSource} alt='nope' height='400px' width='400px'/>
+
+/*          
+            <Image 
+                style={{width: 250, height: 250}} 
+                resizeMode="contain" 
+                source = {{uri:'https://firebasestorage.googleapis.com/v0/b/lizardbellycollective-61b17.appspot.com/o/shitboy.png?alt=media&token=5785ba06-6b2f-4217-b31d-03fdb597de57'}} 
+            />
+*/
 
 export default indexCards;
