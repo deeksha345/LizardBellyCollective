@@ -16,8 +16,9 @@
 }
 
 .Images {
-    height: 150px;
-    width: 150px;
-    border-radius: 75px;
+    height: 100px;
+    width: 100px;
+    border: 1px solid silver;
+    border-radius: 50px;
     object-fit: cover;
 }

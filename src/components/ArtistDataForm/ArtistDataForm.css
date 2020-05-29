@@ -1,0 +1,26 @@
+.Form{
+    background-color: rgba(0,0,0,0.8);
+    border: 1px solid silver;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.Section {
+    display:flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Item {
+    flex-direction: column;
+    flex: 1 0 21%;
+}
+
+.Image {
+    height: 100px;
+    width: 100px;
+    border: 1px solid silver;
+    border-radius: 50px;
+    object-fit: cover;
+}

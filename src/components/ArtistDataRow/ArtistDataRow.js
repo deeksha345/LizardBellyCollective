@@ -2,23 +2,37 @@ import React from 'react';
 import Firebase from '../../Firebase';
 import classes from './ArtistDataRow.css';
 import IndexCards from '../IndexCards/IndexCards';
+import ArtistDataForm from '../ArtistDataForm/ArtistDataForm';
 
 const DataRow = (props) => {
 
     const [artistInfo, setArtistInfo] = React.useState();
-    const [selectedArtist, getSelectedArtist] = React.useState();
+    const [selectedArtist, setSelectedArtist] = React.useState({
+        name: "New Artist",
+        bio: "",
+        image: "https://firebasestorage.googleapis.com/v0/b/lizardbellycollective-61b17.appspot.com/o/lbc%20_%20coin%20logo%20_%20main%201.png?alt=media&token=e47ae18a-3c40-4400-84e5-9cd78a6bcd54",
+        socials:{
+            bandcamp: "",
+            facebook: "",
+            instagram: "",
+            soundcloud: "",
+            spotify: "",
+            twitch: "",
+            twitter: "",
+            youtube: ""
+        }
+    });
+
+    const fetchData = async () => {
+        const db = Firebase.firestore();
+        const data = await db.collection('artists').get();
+        setArtistInfo(data)
+      }
 
     // GET DATA FROM FIREBASE, store in State
-    React.useEffect( () => {
-        const fetchData = async () => {
-          const db = Firebase.firestore();
-          const data = await db.collection('artists').get();
-          setArtistInfo(data)
-        }
-        fetchData()
-      }, [] )
+    React.useEffect( () => { fetchData() }, [] )
 
-    // UPLOAD IMAGE TO STORAGE
+    // UPLOAD IMAGE HANDLER
     const uploadImageHandler = (event) => {
 
         const storageRef = Firebase.storage().ref();
@@ -33,79 +47,72 @@ const DataRow = (props) => {
             })});
     }
 
-    // UPLOAD DATA TO STORAGE
-    const uploadDataHandler = (event) => {
-        const artistRef = Firebase.firestore().collection('artists');
-        const artistKey = '8QW0luJyZK5HFmGBJ7eo';
-        let newData = {
-            name: "nuBand1",
-            bio: "WeRock",
-            image: null,
-            socials: {
-                facebook: "",
-                instagram: ""
-            }
-        };
+    // TEXBOX HANDLER
+    const textEnteredHandler = (event, social) => {
 
-        console.log(artistInfo.docs[0].id, artistInfo.docs[0].data());
-        artistRef.doc(artistKey).set(newData);
+        let dummyArtist = {...selectedArtist}
+
+        if(social)
+            dummyArtist.socials[event.target.name] = event.target.value;
+        else
+            dummyArtist[event.target.name] = event.target.value;
+     
+        setSelectedArtist(dummyArtist)
+    }
+
+    // UPLOAD DATA HANDLER
+    const uploadDataHandler = () => {
+        const artistRef = Firebase.firestore().collection('artists');
+        const artistKey = selectedArtist.name;
+
+        artistRef.doc(artistKey)
+            .set(selectedArtist)
+            .then(fetchData);
 
     }
-    
+
+    // ARTIST SELECT HANDLER
+    const artistSelectHandler = (key) => {
+        //Get and display info from selected card
+        let db = Firebase.firestore();
+        let coll = db.collection('artists').doc(key);
+        coll.get()
+            .then(doc => {
+                if (!doc.exists) {
+                console.log('No such document!');
+                } else {
+                console.log('Document data:', doc.data());
+                setSelectedArtist(doc.data())
+                }
+            })
+            .catch(err => {
+                console.log('Error getting document', err);
+            });
+    }
+
+    console.log(selectedArtist)
     // JSX
     return(
         <div className={classes.ArtistDataRow}>
+            {<ArtistDataForm
+                imageSelected={uploadImageHandler}
+                saveButton={uploadDataHandler}
+                selectedArtist={selectedArtist}
+                textEntered={textEnteredHandler}
+            />}
             <div className={classes.Section}>
-                <div>
-                    <p>Image:</p>
-                    {/*
-                    <img 
-                    src={props.imgSource}
-                    alt= 'unable to load'
-                    className={cards.Images}
-                    />
-                    */}
-                    <input type="file" onChange={uploadImageHandler}/>
+            {artistInfo ? artistInfo.docs.map (artist => (
+                <div className={classes.Item} key={artist.id}>
+                <IndexCards
+                    key={artist.id}
+                    fbKey={artist.id}
+                    title={artist.data().name}
+                    description={artist.data().bio}
+                    imgSource={artist.data().image}
+                    click={artistSelectHandler}
+                />
                 </div>
-                <p>Artist Name:</p>
-                <input type="text" value={props.name}/>
-                <p>Bio:</p>
-                <input type="text" value={props.bio}/>
-            </div>
-            <div className={classes.Section}>
-                <div className={classes.Item}>
-                <p>Instagram:</p>
-                <input type="text" value={props.instagram}/>
-                </div>
-                <div className={classes.Item}>
-                <p>Twitter:</p>
-                <input type="text" value={props.twitter}/>
-                </div>
-                <div className={classes.Item}>
-                <p>Twitch:</p>
-                <input type="text" value={props.twitch}/>
-                </div>
-                <div className={classes.Item}>
-                <p>Spotify:</p>
-                <input type="text" value={props.spotify}/>
-                </div>
-                <div className={classes.Item}>
-                <p>Soundcloud:</p>
-                <input type="text" value={props.soundcloud}/>
-                </div>
-                <div className={classes.Item}>
-                <p>Bandcamp:</p>
-                <input type="text" value={props.bandcamp}/>
-                </div>
-                <div className={classes.Item}>
-                <p>Youtube:</p>
-                <input type="text" value={props.youtube}/>
-                </div>
-                <div className={classes.Item}>
-                <p>Facebook:</p>
-                <input type="text" value={props.facebookn}/>
-                <input type="button" onClick={uploadDataHandler} ></input>
-                </div>
+            )) : <p>NOPE</p>}
             </div>
             
         </div>
