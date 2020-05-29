@@ -15,7 +15,7 @@ const artistDataForm = (props) => {
                         className={classes.Image}
                         src={props.selectedArtist.image}
                     />}
-                    <input type="file" ref={uploadButton} style={{display: 'none'}} onChange={props.ImageSelected}/>
+                    <input type="file" ref={uploadButton} style={{display: 'none'}} onChange={props.imageSelected}/>
                     <input type='button' onClick={() => uploadButton.current.click()} value={'Browse...'}/>
                 </div>
                 <div className={classes.Item}>

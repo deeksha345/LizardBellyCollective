@@ -10,7 +10,7 @@ const indexCards = (props) => {
                 alt= 'unable to load'
                 className={cards.Images}
             />
-            <h1>{props.title}</h1>
+            <h3>{props.title}</h3>
             <p>{props.description}</p>
         </div>
     );

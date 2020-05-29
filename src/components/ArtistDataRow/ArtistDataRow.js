@@ -27,25 +27,10 @@ const DataRow = (props) => {
         const db = Firebase.firestore();
         const data = await db.collection('artists').get();
         setArtistInfo(data)
-      }
+    }
 
     // GET DATA FROM FIREBASE, store in State
     React.useEffect( () => { fetchData() }, [] )
-
-    // UPLOAD IMAGE HANDLER
-    const uploadImageHandler = (event) => {
-
-        const storageRef = Firebase.storage().ref();
-        const file = event.target.files[0];
-
-        storageRef.child(file.name)
-            .put(file)
-            .then( (snapshot) => {
-            console.log('uploaded a file');
-            snapshot.ref.getDownloadURL().then((downloadURL) => {
-                console.log('file available at ', downloadURL);
-            })});
-    }
 
     // TEXBOX HANDLER
     const textEnteredHandler = (event, social) => {
@@ -71,6 +56,25 @@ const DataRow = (props) => {
 
     }
 
+    // UPLOAD IMAGE HANDLER
+    const uploadImageHandler = (event) => {
+
+        const storageRef = Firebase.storage().ref();
+        const file = event.target.files[0];
+        console.log('made it to handler')
+
+        storageRef.child(file.name)
+            .put(file)
+            .then( (snapshot) => {
+            console.log('uploaded a file');
+            snapshot.ref.getDownloadURL().then((downloadURL) => {
+                let dummyArtist = {...setSelectedArtist};
+                dummyArtist.image = downloadURL;
+                console.log('boutta set image')
+                setSelectedArtist(dummyArtist);
+            })});
+    }
+
     // ARTIST SELECT HANDLER
     const artistSelectHandler = (key) => {
         //Get and display info from selected card
@@ -90,7 +94,6 @@ const DataRow = (props) => {
             });
     }
 
-    console.log(selectedArtist)
     // JSX
     return(
         <div className={classes.ArtistDataRow}>
