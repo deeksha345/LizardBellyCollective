@@ -1,0 +1,34 @@
+.Form {/*
+    backdrop-filter: blur(5px);
+    background-color: rgba(55, 55, 55, 0.296);
+    border: 1px solid rgba(245, 245, 245, 0.118);
+    border-radius: 10px;
+    margin: 20px;
+    padding: 10px;*/
+}
+
+.Section {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Item {
+    flex-direction: column;
+    flex: 1 0 21%;
+}
+
+.Image {
+    height: 100px;
+    width: 100px;
+    border: 1px solid silver;
+    border-radius: 50px;
+    object-fit: cover;
+}
+
+.Button {
+    font-size: '36px'; 
+    padding: '15px 32px'; 
+    background-color: 'rgb(85,26,139)';
+}
