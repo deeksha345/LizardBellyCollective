@@ -1,12 +1,14 @@
-.Form {
-    background-color: rgba(245, 245, 245, 0.118);
+.Form {/*
+    backdrop-filter: blur(5px);
+    background-color: rgba(55, 55, 55, 0.296);
     border: 1px solid rgba(245, 245, 245, 0.118);
     border-radius: 10px;
-    padding: 10px;
+    margin: 20px;
+    padding: 10px;*/
 }
 
 .Section {
-    display:flex;
+    display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
     align-items: center;

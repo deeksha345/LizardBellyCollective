@@ -77,7 +77,6 @@ const DataRow = (props) => {
 
     // ARTIST SELECT HANDLER
     const artistSelectHandler = (key) => {
-        //Get and display info from selected card
         let db = Firebase.firestore();
         let coll = db.collection('artists').doc(key);
         coll.get()
@@ -108,6 +107,7 @@ const DataRow = (props) => {
     // JSX
     return(
         <div className={classes.ArtistDataRow}>
+            <div className={classes.Section}>
             {<ArtistDataForm
                 imageSelected={uploadImageHandler}
                 saveButton={uploadDataHandler}
@@ -115,19 +115,23 @@ const DataRow = (props) => {
                 textEntered={textEnteredHandler}
                 deleteArtist={deleteArtistHandler}
             />}
+            </div>
+
+            <h2>Artists</h2>
+            
             <div className={classes.Section}>
-            {artistInfo ? artistInfo.docs.map (artist => (
-                <div className={classes.Item} key={artist.id}>
-                <IndexCards
-                    key={artist.id}
-                    fbKey={artist.id}
-                    title={artist.data().name}
-                    description={artist.data().bio}
-                    imgSource={artist.data().image}
-                    click={artistSelectHandler}
-                />
-                </div>
-            )) : <p>LOADING...</p>}
+                {artistInfo ? artistInfo.docs.map (artist => (
+                    <div className={classes.Item} key={artist.id}>
+                    <IndexCards
+                        key={artist.id}
+                        fbKey={artist.id}
+                        title={artist.data().name}
+                        description={artist.data().bio}
+                        imgSource={artist.data().image}
+                        click={artistSelectHandler}
+                    />
+                    </div>
+                )) : <p>LOADING...</p>}
             </div>
             
         </div>
