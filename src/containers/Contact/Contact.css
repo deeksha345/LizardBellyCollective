@@ -1,6 +1,42 @@
 .Contact {
-    text-align: center;
+    text-align: left;
     color: #E2E8EB;
+    width: 55%;
+    height: 100%;
+}
+
+.Button {
+    background-color: green;
+    color: #e2e8eb;
+    border-radius: 25px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 10px;
+    margin: 10px;
+    font-weight: bold;
+    width: 120px;
+    height: 50px;
+    font-size: 24px;
+}
+
+.Button:disabled {
+    cursor: not-allowed;
+    background-color: gray;
+}
+
+.Container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Lizard {
+    width: 45%;
+}
+
+.LizardPic {
+    transform: rotate(270deg);
     width: 100%;
     height: 100%;
 }
