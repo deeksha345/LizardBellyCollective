@@ -11,7 +11,6 @@ const indexCards = (props) => {
                 className={cards.Images}
             />
             <h3>{props.title}</h3>
-            <p>{props.description}</p>
         </div>
     );
 }

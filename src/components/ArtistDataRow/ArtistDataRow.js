@@ -68,7 +68,7 @@ const DataRow = (props) => {
             .then( (snapshot) => {
             console.log('uploaded a file');
             snapshot.ref.getDownloadURL().then((downloadURL) => {
-                let dummyArtist = {...setSelectedArtist};
+                let dummyArtist = {...selectedArtist};
                 dummyArtist.image = downloadURL;
                 console.log('boutta set image')
                 setSelectedArtist(dummyArtist);
@@ -94,6 +94,17 @@ const DataRow = (props) => {
             });
     }
 
+    // DELETE ARTIST HANDLER
+    const deleteArtistHandler = () => {
+        const artistRef = Firebase.firestore().collection('artists');
+        const artistKey = selectedArtist.name;
+
+        artistRef.doc(artistKey)
+            .delete()
+            .then(fetchData);
+    }
+
+    console.log(selectedArtist)
     // JSX
     return(
         <div className={classes.ArtistDataRow}>
@@ -102,6 +113,7 @@ const DataRow = (props) => {
                 saveButton={uploadDataHandler}
                 selectedArtist={selectedArtist}
                 textEntered={textEnteredHandler}
+                deleteArtist={deleteArtistHandler}
             />}
             <div className={classes.Section}>
             {artistInfo ? artistInfo.docs.map (artist => (
@@ -115,7 +127,7 @@ const DataRow = (props) => {
                     click={artistSelectHandler}
                 />
                 </div>
-            )) : <p>NOPE</p>}
+            )) : <p>LOADING...</p>}
             </div>
             
         </div>

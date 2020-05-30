@@ -27,7 +27,7 @@ const artistDataForm = (props) => {
                     <input name="bio" type="text" value={props.selectedArtist.bio} onChange={(event) => props.textEntered(event, false)}/>
                 </div>
             </div>
-            <div className={classes.Section}>
+            <div className={classes.Section} style={{paddingBottom: '30px', border: '1px solid silver', borderRadius: '10px'}}>
                 <div className={classes.Item}>
                 <p>Instagram:</p>
                 <input name='instagram' type="text" value={props.instagram} onChange={(event) => props.textEntered(event, true)}/>
@@ -61,8 +61,9 @@ const artistDataForm = (props) => {
                 <input name='facebook' type="text" value={props.facebook} onChange={(event) => props.textEntered(event, true)}/>
                 </div>    
             </div>
-            <div className={classes.Section} style={{flexDirection: 'column', margin: '20px'}}>
-            <input type="button" value={'SAVE'} onClick={props.saveButton} ></input>
+            <div className={classes.Section} style={{marginTop: '20px'}}>
+            <input style={{fontSize: '36px'}} type='button' value={'DELETE'} onClick={props.deleteArtist } />
+            <input style={{fontSize: '36px'}} type="button" value={'SAVE'} onClick={props.saveButton} />
             </div>
             
         </div>

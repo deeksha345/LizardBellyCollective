@@ -1,6 +1,6 @@
-.Form{
-    background-color: rgba(0,0,0,0.8);
-    border: 1px solid silver;
+.Form {
+    background-color: rgba(245, 245, 245, 0.118);
+    border: 1px solid rgba(245, 245, 245, 0.118);
     border-radius: 10px;
     padding: 10px;
 }
@@ -23,4 +23,10 @@
     border: 1px solid silver;
     border-radius: 50px;
     object-fit: cover;
+}
+
+.Button {
+    font-size: '36px'; 
+    padding: '15px 32px'; 
+    background-color: 'rgb(85,26,139)';
 }
