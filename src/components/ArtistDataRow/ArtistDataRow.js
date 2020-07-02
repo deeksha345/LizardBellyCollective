@@ -1,13 +1,13 @@
 import React from 'react';
-import Firebase from '../../Firebase';
+import {fsArtists, fsStorage} from '../../Firebase';
 import classes from './ArtistDataRow.css';
 import IndexCards from '../IndexCards/IndexCards';
 import ArtistDataForm from '../ArtistDataForm/ArtistDataForm';
 
 const DataRow = (props) => {
 
-    const [artistInfo, setArtistInfo] = React.useState();
-    const [selectedArtist, setSelectedArtist] = React.useState({
+    // INITIAL VARS
+    const newArtist = {
         name: "New Artist",
         bio: "",
         image: "https://firebasestorage.googleapis.com/v0/b/lizardbellycollective-61b17.appspot.com/o/lbc%20_%20coin%20logo%20_%20main%201.png?alt=media&token=e47ae18a-3c40-4400-84e5-9cd78a6bcd54",
@@ -21,90 +21,84 @@ const DataRow = (props) => {
             twitter: "",
             youtube: ""
         }
-    });
-
-    const fetchData = async () => {
-        const db = Firebase.firestore();
-        const data = await db.collection('artists').get();
-        setArtistInfo(data)
     }
 
-    // GET DATA FROM FIREBASE, store in State
+    // COMPONENT STATE
+    const [loadMessage, setLoadMessage] = React.useState('Loading...')
+    const [artistInfo, setArtistInfo] = React.useState();
+    const [selectedArtist, setSelectedArtist] = React.useState(newArtist);
+
+    // FUNCTIONS
+    const fetchData = () => { 
+        fsArtists.get()
+            .catch(error => {
+                console.error(error);
+                setLoadMessage('Something went wrong :(');
+            })
+            .then(results => {
+                console.log(results.docs[0].data().bio)
+                setArtistInfo(results)
+            })
+    }
+
+    // LIFECYCLE HOOKS ETC
     React.useEffect( () => { fetchData() }, [] )
 
-    // TEXBOX HANDLER
+    // EVENT HANDLERS
     const textEnteredHandler = (event, social) => {
-
         let dummyArtist = {...selectedArtist}
 
         if(social)
-            dummyArtist.socials[event.target.name] = event.target.value;
+            dummyArtist.socials[event.target.name] = event.target.value
         else
-            dummyArtist[event.target.name] = event.target.value;
+            dummyArtist[event.target.name] = event.target.value
      
         setSelectedArtist(dummyArtist)
     }
 
-    // UPLOAD DATA HANDLER
     const uploadDataHandler = () => {
-        const artistRef = Firebase.firestore().collection('artists');
-        const artistKey = selectedArtist.name;
-
-        artistRef.doc(artistKey)
+        fsArtists.doc(selectedArtist.name)
             .set(selectedArtist)
-            .then(fetchData);
-
+            .then(fetchData)
+            .catch(e => {
+                console.error(e);
+            })
     }
 
-    // UPLOAD IMAGE HANDLER
     const uploadImageHandler = (event) => {
-
-        const storageRef = Firebase.storage().ref();
         const file = event.target.files[0];
-        console.log('made it to handler')
 
-        storageRef.child(file.name)
-            .put(file)
-            .then( (snapshot) => {
-            console.log('uploaded a file');
-            snapshot.ref.getDownloadURL().then((downloadURL) => {
-                let dummyArtist = {...selectedArtist};
-                dummyArtist.image = downloadURL;
-                console.log('boutta set image')
-                setSelectedArtist(dummyArtist);
-            })});
+        fsStorage.child(file.name).put(file)
+            .then( snapshot => {
+            snapshot.ref.getDownloadURL()
+                .then((downloadURL) => {
+                    let dummyArtist = {...selectedArtist};
+                    dummyArtist.image = downloadURL;
+                    setSelectedArtist(dummyArtist);})
+            })
+            .catch(e => console.error(e));
     }
 
-    // ARTIST SELECT HANDLER
     const artistSelectHandler = (key) => {
-        let db = Firebase.firestore();
-        let coll = db.collection('artists').doc(key);
-        coll.get()
+        fsArtists.doc(key).get()
             .then(doc => {
                 if (!doc.exists) {
                 console.log('No such document!');
                 } else {
-                console.log('Document data:', doc.data());
+                window.scrollTo(0, 0);
                 setSelectedArtist(doc.data())
                 }
             })
-            .catch(err => {
-                console.log('Error getting document', err);
-            });
+            .catch(e => console.error(e));
     }
 
-    // DELETE ARTIST HANDLER
     const deleteArtistHandler = () => {
-        const artistRef = Firebase.firestore().collection('artists');
-        const artistKey = selectedArtist.name;
-
-        artistRef.doc(artistKey)
-            .delete()
-            .then(fetchData);
+        fsArtists.doc(selectedArtist.name).delete()
+            .then(fetchData)
+            .catch(e => console.error(e))
     }
 
-    console.log(selectedArtist)
-    // JSX
+    // JSX JSX JSX JSX JSX JSX JSX JSX JSX JSX JSX JSX JSX JSX JSX JSX JSX JSX JSX JSX JSX JSX JSX JSX
     return(
         <div className={classes.ArtistDataRow}>
             <div className={classes.Section}>
@@ -131,7 +125,7 @@ const DataRow = (props) => {
                         click={artistSelectHandler}
                     />
                     </div>
-                )) : <p>LOADING...</p>}
+                )) : <p>{loadMessage}</p>}
             </div>
             
         </div>

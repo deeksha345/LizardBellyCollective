@@ -6,7 +6,7 @@ class Admin extends Component {
     render() {
         return (
             <div className={classes.Admin}>
-                <h1>Admin login!</h1>
+                <h1 style={{fontSize: '58px', margin: '0px'}}>Admin</h1>
                 <DataRow name={'test'} bio={'test bio'}/>
             </div>
         );

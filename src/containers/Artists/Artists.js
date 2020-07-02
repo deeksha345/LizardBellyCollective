@@ -1,27 +1,27 @@
 import React from 'react';
 import classes from './Artists.css';
 import IndexCards from '../../components/IndexCards/IndexCards';
-import Firebase from '../../Firebase';
+import {fsArtists} from '../../Firebase';
 
 const Artists = () => {
 
+  // COMPONENT STATE
   const [artistInfo, setArtistInfo] = React.useState();
 
-  React.useEffect( () => {
-    const fetchData = async () => {
-      const db = Firebase.firestore();
-      const data = await db.collection('artists').get();
-      setArtistInfo(data)
-    }
-    fetchData()
-  }, [] )
-
-  const clickArtistHandler = (key) => {
-    console.log(key)
+  // FIREBASE FUNCTIONS
+  const fetchData = () => { 
+    fsArtists.get()
+      .then(results => {setArtistInfo(results)})
+      .catch(e => console.error(e))
   }
 
-  return(
-        
+  // LIFECYCLE HOOKS ETC
+  React.useEffect( () => { fetchData() }, [] )
+
+  // EVENT HANDLERS
+  const clickArtistHandler = (key) => { console.log(key) }
+
+  return(     
         <div className={classes.Artists}>
           <h1>Artists!</h1>
           <div className={classes.Showcase}>

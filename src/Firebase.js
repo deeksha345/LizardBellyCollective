@@ -1,8 +1,8 @@
 import firebase from 'firebase';
 
-  // Your web app's Firebase configuration
+  // FIREBASE CONFIG
   var firebaseConfig = {
-    apiKey: "AIzaSyCrLQsMwi7tUTBJakwZSuso2LyiYUI5OZA",
+    apiKey: "AIzaSyDr90EmzbiQa-ajkP3S9_vPT_hv7T6KRZg",
     authDomain: "lizardbellycollective-61b17.firebaseapp.com",
     databaseURL: "https://lizardbellycollective-61b17.firebaseio.com",
     projectId: "lizardbellycollective-61b17",
@@ -11,8 +11,14 @@ import firebase from 'firebase';
     appId: "1:646654926427:web:10ab78f0cd3184efd8e97e",
     measurementId: "G-P94FJEMKDB"
   };
-  // Initialize Firebase
+
+  // INIT
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
+
+  // FIRESTORE LOCATIONS
+  export const fsArtists = firebase.firestore().collection('artists');
+  export const fsEvents = firebase.firestore().collection('events');
+  export const fsStorage = firebase.storage().ref();
 
   export default firebase;
